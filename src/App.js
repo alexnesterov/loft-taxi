@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header';
+
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import ProfilePage from './pages/ProfilePage';
+import MapPage from './pages/MapPage';
+
+class App extends Component {
+    state = {
+        page: 'Login'
+    }
+
+    handleClick = (page) => {
+        this.setState({
+            page
+        });
+    }
+
+    render() {
+        const nav = [
+            {
+                name: 'Карта',
+                link: 'Map'
+            },
+            {
+                name: 'Профиль',
+                link: 'Profile'
+            },
+            {
+                name: 'Логин',
+                link: 'Login'
+            }
+        ]
+
+        return (
+            <div className="app">
+                <Header headerNav={nav} handleClick={this.handleClick} />
+
+                {this.state.page === 'Login' && <LoginPage handleClick={this.handleClick} /> }
+                {this.state.page === 'SignUp' && <SignUpPage /> }
+                {this.state.page === 'Profile' && <ProfilePage /> }
+                {this.state.page === 'Map' && <MapPage /> }
+            </div>
+        );
+    }
 }
 
 export default App;
