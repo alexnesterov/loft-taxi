@@ -7,8 +7,19 @@ class LoginPage extends Component {
                 <form method="POST">
                     <h1>Войти</h1>
                     <p>Новый пользователь? <button type="button" onClick={e => this.props.navigateTo('signUp')}>Зарегистрируйтесь</button></p>
-                    <p><input type="text" placeholder="имя пользователя*" /></p>
-                    <p><input type="password" placeholder="пароль*" /></p>
+
+                    <p>
+                        <label htmlFor="username">Имя пользователя</label>
+                        <br/>
+                        <input id="username" type="text" name="username" />
+                    </p>
+
+                    <p>
+                        <label htmlFor="password">Пароль</label>
+                        <br/>
+                        <input id="password" type="text" name="password" />
+                    </p>
+
                     <p><button type="submit">Войти</button></p>
                 </form>
             </main>

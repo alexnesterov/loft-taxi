@@ -18,7 +18,7 @@ class SignUpPage extends Component {
                         <input id="name" type="text" name="name" />
                     </p>
                     <p>
-                        <label htmlFor="surname">Адрес электронной почты</label>
+                        <label htmlFor="surname">Фамилия</label>
                         <br/>
                         <input id="surname" type="text" name="surname" />
                     </p>
