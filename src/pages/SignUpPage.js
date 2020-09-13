@@ -4,7 +4,7 @@ class SignUpPage extends Component {
     render() {
         return (
             <div className="SignUpPage container">
-                <form method="POST">
+                <form method="POST" onSubmit={e => this.props.handleClick('Map')}>
                     <h1>Регистрация</h1>
                     <p>Уже зарегистрирован? <button type="button" onClick={e => this.props.handleClick('Login')}>Войти</button></p>
                     <p>
