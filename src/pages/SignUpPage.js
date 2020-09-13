@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class SignUpPage extends Component {
     render() {
         return (
-            <div className="SignUpPage container">
-                <form method="POST" onSubmit={e => this.props.handleClick('Map')}>
+            <main className="SignUpPage container">
+                <form method="POST" onSubmit={e => this.props.navigateTo('map')}>
                     <h1>Регистрация</h1>
-                    <p>Уже зарегистрирован? <button type="button" onClick={e => this.props.handleClick('Login')}>Войти</button></p>
+                    <p>Уже зарегистрирован? <button type="button" onClick={e => this.props.navigateTo('login')}>Войти</button></p>
                     <p>
                         <label htmlFor="email">Адрес электронной почты</label>
                         <br/>
@@ -29,7 +29,7 @@ class SignUpPage extends Component {
                     </p>
                     <p><button type="submit">Зарегистрироваться</button></p>
                 </form>
-            </div>
+            </main>
         );
     }
 }

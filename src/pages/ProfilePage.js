@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class ProfilePage extends Component {
     render() {
         return (
-            <div className="ProfilePage">
+            <main className="ProfilePage">
                 Profile Page
-            </div>
+            </main>
         );
     }
 }

@@ -1,13 +1,28 @@
 import React from 'react';
 
-const Header = ({headerNav, handleClick}) => {
+const Header = ({navigateTo}) => {
+    const nav = [
+        {
+            name: 'Карта',
+            link: 'map'
+        },
+        {
+            name: 'Профиль',
+            link: 'profile'
+        },
+        {
+            name: 'Логин',
+            link: 'login'
+        }
+    ];
+
     return (
         <div className="header">
             <h1 className="header__title">LoftTaxi</h1>
             <ul className="nav">
-                {headerNav.map((item, index) =>
+                {nav.map((item, index) =>
                 <li className="nav__item" key={index}>
-                    <button className="nav__link" onClick={(e) => handleClick(item.link)}>{item.name}</button>
+                    <button className="nav__link" onClick={(e) => navigateTo(item.link)}>{item.name}</button>
                 </li>
                 )}
             </ul>

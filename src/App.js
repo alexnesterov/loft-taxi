@@ -10,39 +10,25 @@ import MapPage from './pages/MapPage';
 
 class App extends Component {
     state = {
-        page: 'Login'
+        currentPage: 'login'
     }
 
-    handleClick = (page) => {
+    navigateTo = (page) => {
         this.setState({
-            page
+            currentPage: page,
         });
     }
 
     render() {
-        const nav = [
-            {
-                name: 'Карта',
-                link: 'Map'
-            },
-            {
-                name: 'Профиль',
-                link: 'Profile'
-            },
-            {
-                name: 'Логин',
-                link: 'Login'
-            }
-        ]
-
         return (
             <div className="app">
-                <Header headerNav={nav} handleClick={this.handleClick} />
+                <Header navigateTo={this.navigateTo} />
 
-                {this.state.page === 'Login' && <LoginPage handleClick={this.handleClick} /> }
-                {this.state.page === 'SignUp' && <SignUpPage handleClick={this.handleClick} /> }
-                {this.state.page === 'Profile' && <ProfilePage /> }
-                {this.state.page === 'Map' && <MapPage /> }
+                {this.state.currentPage === 'login' && <LoginPage navigateTo={this.navigateTo} /> }
+                {this.state.currentPage === 'signUp' && <SignUpPage navigateTo={this.navigateTo} /> }
+                {this.state.currentPage === 'profile' && <ProfilePage /> }
+                {this.state.currentPage === 'map' && <MapPage /> }
+
             </div>
         );
     }
