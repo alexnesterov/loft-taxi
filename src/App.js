@@ -40,7 +40,7 @@ class App extends Component {
                 <Header headerNav={nav} handleClick={this.handleClick} />
 
                 {this.state.page === 'Login' && <LoginPage handleClick={this.handleClick} /> }
-                {this.state.page === 'SignUp' && <SignUpPage /> }
+                {this.state.page === 'SignUp' && <SignUpPage handleClick={this.handleClick} /> }
                 {this.state.page === 'Profile' && <ProfilePage /> }
                 {this.state.page === 'Map' && <MapPage /> }
             </div>
