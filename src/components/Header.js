@@ -21,7 +21,7 @@ const Header = ({ navigateTo }) => {
       <h1 className="header__title">LoftTaxi</h1>
       <ul className="nav">
         {nav.map((item, index) => (
-          <li className="nav__item" key={index}>
+          <li className="nav__item" key={item.link}>
             <button
               className="nav__link"
               onClick={(e) => navigateTo(item.link)}
