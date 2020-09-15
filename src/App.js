@@ -19,19 +19,26 @@ class App extends Component {
     });
   };
 
+  renderPage = (page) => {
+    switch (page) {
+      case 'login':
+        return <LoginPage navigateTo={this.navigateTo} />;
+      case 'signUp':
+        return <SignUpPage navigateTo={this.navigateTo} />;
+      case 'profile':
+        return <ProfilePage />;
+      case 'map':
+        return <MapPage />;
+      default:
+        return <LoginPage navigateTo={this.navigateTo} />;
+    }
+  };
+
   render() {
     return (
       <div className="app">
         <Header navigateTo={this.navigateTo} />
-
-        {this.state.currentPage === 'login' && (
-          <LoginPage navigateTo={this.navigateTo} />
-        )}
-        {this.state.currentPage === 'signUp' && (
-          <SignUpPage navigateTo={this.navigateTo} />
-        )}
-        {this.state.currentPage === 'profile' && <ProfilePage />}
-        {this.state.currentPage === 'map' && <MapPage />}
+        {this.renderPage(this.state.currentPage)}
       </div>
     );
   }
