@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header';
+
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import ProfilePage from './pages/ProfilePage';
+import MapPage from './pages/MapPage';
+
+class App extends Component {
+  state = {
+    currentPage: 'login',
+  };
+
+  navigateTo = (page) => {
+    this.setState({
+      currentPage: page,
+    });
+  };
+
+  renderPage = (page) => {
+    switch (page) {
+      case 'login':
+        return <LoginPage navigateTo={this.navigateTo} />;
+      case 'signUp':
+        return <SignUpPage navigateTo={this.navigateTo} />;
+      case 'profile':
+        return <ProfilePage />;
+      case 'map':
+        return <MapPage />;
+      default:
+        return <LoginPage navigateTo={this.navigateTo} />;
+    }
+  };
+
+  render() {
+    return (
+      <div className="app">
+        <Header navigateTo={this.navigateTo} />
+        {this.renderPage(this.state.currentPage)}
+      </div>
+    );
+  }
 }
 
 export default App;
