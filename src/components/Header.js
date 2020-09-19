@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = ({ navigateTo }) => {
+const Header = ({ title, navigateTo }) => {
   const nav = [
     {
       name: 'Карта',
@@ -18,7 +19,7 @@ const Header = ({ navigateTo }) => {
 
   return (
     <div className="header">
-      <h1 className="header__title">LoftTaxi</h1>
+      <h1 className="header__title">{ title }</h1>
       <ul className="nav">
         {nav.map((item, index) => (
           <li className="nav__item" key={item.link}>
@@ -34,5 +35,14 @@ const Header = ({ navigateTo }) => {
     </div>
   );
 };
+
+Header.propTypes = {
+  title: PropTypes.string,
+  navigateTo: PropTypes.func.isRequired,
+};
+
+Header.defaultProps ={
+  title: 'LoftTaxi',
+}
 
 export default Header;

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SignUpPage extends Component {
+  static propTypes = {
+    navigateTo: PropTypes.func,
+  };
+
   render() {
     return (
       <main className="SignUpPage container">
