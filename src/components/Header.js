@@ -19,7 +19,7 @@ const Header = ({ title, navigateTo }) => {
 
   return (
     <div className="header">
-      <h1 className="header__title">{ title }</h1>
+      <h1 className="header__title">{title}</h1>
       <ul className="nav">
         {nav.map((item, index) => (
           <li className="nav__item" key={item.link}>
@@ -41,8 +41,8 @@ Header.propTypes = {
   navigateTo: PropTypes.func.isRequired,
 };
 
-Header.defaultProps ={
+Header.defaultProps = {
   title: 'LoftTaxi',
-}
+};
 
 export default Header;
