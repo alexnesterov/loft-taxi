@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 import Header from './components/Header';
@@ -7,6 +8,14 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
 import MapPage from './pages/MapPage';
+import { withAuth } from './AuthContext';
+
+const PAGES = {
+  login: (props) => <LoginPage {...props} />,
+  map: (props) => <MapPage {...props} />,
+  profile: (props) => <ProfilePage {...props} />,
+  signUp: (props) => <SignUpPage {...props} />,
+};
 
 class App extends Component {
   state = {
@@ -14,23 +23,10 @@ class App extends Component {
   };
 
   navigateTo = (page) => {
-    this.setState({
-      currentPage: page,
-    });
-  };
-
-  renderPage = (page) => {
-    switch (page) {
-      case 'login':
-        return <LoginPage navigateTo={this.navigateTo} />;
-      case 'signUp':
-        return <SignUpPage navigateTo={this.navigateTo} />;
-      case 'profile':
-        return <ProfilePage />;
-      case 'map':
-        return <MapPage />;
-      default:
-        return <LoginPage navigateTo={this.navigateTo} />;
+    if (this.props.isLoggedIn) {
+      this.setState({ currentPage: page });
+    } else {
+      this.setState({ currentPage: 'login' });
     }
   };
 
@@ -38,10 +34,14 @@ class App extends Component {
     return (
       <div className="app">
         <Header navigateTo={this.navigateTo} />
-        {this.renderPage(this.state.currentPage)}
+        {PAGES[this.state.currentPage]({ navigateTo: this.navigateTo })}
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
+
+export default withAuth(App);
